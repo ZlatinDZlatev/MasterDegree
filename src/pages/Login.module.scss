@@ -1,0 +1,46 @@
+$labelColor: #CECECE;
+$submitColor: #41B3A3;
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: $labelColor;
+    padding: 5%;
+    height: 100vh;
+  }
+  
+  .label {
+    color: $labelColor;
+    font-weight: bold;
+    margin-bottom: 2%;
+  }
+  
+  .input {
+    width: 60%;
+    padding: 2%;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 4%;
+  }
+  
+  .submitButton {
+    background-color: $submitColor;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 2% 4%;
+    cursor: pointer;
+  }
+  
+  .link {
+    color: $labelColor;
+    text-decoration: none;
+    margin-top: 4%;
+  
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  
