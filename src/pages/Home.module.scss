@@ -1,0 +1,60 @@
+div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #CECECE;
+    padding: 20px;
+    
+    input[type="submit"],
+    input[type="button"] {
+      background-color: #41B3A3;
+      color: #FFFFFF;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    
+    input[type="checkbox"] {
+      margin-left: 5px;
+    }
+    
+    input[type="number"],
+    input[type="text"],
+    select {
+      padding: 5px;
+      margin: 5px 0;
+      border: 1px solid #41B3A3;
+      border-radius: 5px;
+    }
+    
+    select {
+      width: 100%;
+      max-width: 200px;
+    }
+    
+    label {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    
+    .datetime-picker {
+      margin-top: 10px;
+    }
+    
+    .barcode-section {
+      margin-top: 10px;
+    }
+    
+    .nutrition-info {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      
+      input[type="number"] {
+        flex: 0 0 150px;
+        margin-right: 10px;
+      }
+    }
+  }
