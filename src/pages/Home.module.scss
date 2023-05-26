@@ -1,60 +1,106 @@
-div {
+.wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     background-color: #CECECE;
     padding: 20px;
-    
-    input[type="submit"],
-    input[type="button"] {
+    height: 100vh;
+
+  
+    .searchdiv {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+  
+    .search {
+      width: 200px;
+      padding: 5px;
+      border: none;
+      border-radius: 5px;
+      background-color: #FFFFFF;
+      color: #000000;
+    }
+  
+    .exit {
+      background-color: #FF6347;
+      color: #FFFFFF;
+      padding: 5px 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  
+    .choice {
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+  
+      .radio {
+        margin-right: 5px;
+      }
+    }
+    .filters{
+        display: grid;
+        .check {
+            margin-left: 5px;
+          }
+          
+    }
+
+  
+   
+  
+    .macrodiv {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+  
+      .macro {
+        margin-right: 5px;
+      }
+  
+      .number {
+        width: 100px;
+        padding: 5px;
+        border: 1px solid #41B3A3;
+        border-radius: 5px;
+      }
+    }
+  
+    .diary {
+      margin-top: 10px;
+      padding: 5px 10px;
       background-color: #41B3A3;
       color: #FFFFFF;
-      padding: 10px 20px;
       border: none;
-      cursor: pointer;
-      margin-top: 10px;
-    }
-    
-    input[type="checkbox"] {
-      margin-left: 5px;
-    }
-    
-    input[type="number"],
-    input[type="text"],
-    select {
-      padding: 5px;
-      margin: 5px 0;
-      border: 1px solid #41B3A3;
       border-radius: 5px;
+      cursor: pointer;
     }
-    
-    select {
-      width: 100%;
-      max-width: 200px;
-    }
-    
-    label {
-      margin-top: 10px;
-      font-weight: bold;
-    }
-    
-    .datetime-picker {
-      margin-top: 10px;
-    }
-    
-    .barcode-section {
-      margin-top: 10px;
-    }
-    
-    .nutrition-info {
-      margin-top: 10px;
+  
+    .nutritiondiv {
       display: flex;
-      flex-wrap: wrap;
-      
-      input[type="number"] {
-        flex: 0 0 150px;
-        margin-right: 10px;
+      align-items: center;
+      margin-top: 10px;
+  
+      .nutrition {
+        margin-right: 5px;
+        width: 150px;
+        padding: 5px;
+        border: 1px solid #41B3A3;
+        border-radius: 5px;
+      }
+    }
+  
+    .calc {
+      margin-top: 10px;
+  
+      .number {
+        width: 100px;
+        padding: 5px;
+        border: 1px solid #41B3A3;
+        border-radius: 5px;
       }
     }
   }

@@ -2,33 +2,41 @@ import {
     Routes,
     Route
   } from "react-router-dom";
-import Home from '../pages/Home'
-import About from '../pages/About'
-import Cart from '../pages/Cart'
-import Contacts from '../pages/Contacts'
-import Offers from '../pages/Offers'
-import Products from '../pages/Products'
-import Laptops from "../pages/Laptops";
-import Product from "../pages/Product";
-import Monitors from "../pages/Monitors";
-import Profile from "../pages/Profile"
+
 import { Navigate } from "react-router-dom";
+import Diplomna from "../pages/Diplomna";
+import Recepti from "../pages/Recepti";
+import Diary from "../pages/Diary";
+import Login from "../pages/Login";
+import Register from "../pages/Register";
+import ForgotPassword from "../pages/ForgotPassword";
+import ResetPassword from "../pages/ResetPassword";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+
 
 
   
   export default function Router() {
+    const [auth, setAuth] = useState()
+    axios.defaults.withCredentials= true
+    useEffect(()=>{
+      axios("http://localhost:4000/authcheck")
+      .then(res=>{
+        setAuth(res.data.auth)
+        console.log(res.data.auth)
+      })
+    },[])
+
   return(
       <Routes>
-          <Route exact path="/"  element={ <Home /> } />
-          <Route exact path="/contacts" element= { <Contacts/> } />
-          <Route exact path="/about" element= { <About/> } />
-          <Route exact path="/cart" element= { <Cart/> }/>
-          <Route exact path="/offers" element= { <Offers/> } />
-          <Route exact path="/products" element= { <Products/> } />
-          <Route exact path="/products/laptops" element= { <Laptops/> } />
-          <Route exact path="/products/monitors" element= { <Monitors/> } />
-          <Route path="/products/:id" element={<Product />} /> 
-          <Route exact path="/profile" element= {localStorage.getItem("user")? <Profile/>:<Navigate to= {{pathname:"/"}}/> } />
+          <Route exact path="/"  element={auth? <Diplomna /> : <Login />} />
+          <Route exact path="/login"  element={auth? <Diplomna />: <Login/> } />
+          <Route exact path="/forgot"  element={auth?<Diplomna />: <ForgotPassword /> } />
+          <Route exact path="/reset" element ={auth?<Diplomna />:<ResetPassword /> } /> 
+          <Route exact path="/register"  element={auth?<Diplomna />: <Register/> } />
+          <Route exact path="/recipes"  element={auth? <Recepti /> : <Login />} />
+          <Route exact path="/diary"  element={auth? <Diary /> : <Login />} />
       </Routes>
   )
   }
