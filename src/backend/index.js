@@ -32,7 +32,7 @@ const sessionMiddleware=sessions({
   cookie:{
     path:'/',
     httpOnly:true,
-    maxAge: 1000*86400,
+    maxAge: 1000*86400, // в милисекунди, което се равнява на 1 ден
     name:'connect.sid',
     },
   secret:'keyboard cat',
@@ -62,8 +62,10 @@ app.use(cors({
   
 }))
 app.set("view engine","ejs")
-app.get('/getProducts', db.getProducts)
+app.get('/getProductsGradina', db.getProductsGradina)
+app.get('/getProductsQsla', db.getProductsQsla)
 app.get('/getProductsSchool', db.getProductsSchool)
+app.get('/getProducts', db.getProducts)
 app.get('/authcheck', async (req, res) => {
   res.send(
     {
@@ -80,7 +82,8 @@ app.post('/addToDiary', async (req, res) => {
   const p = req.body.p;
   const m = req.body.m;
   const he = req.body.he;
-  pool.query('INSERT into public."diaryex" (date, food, nutrition, quantity, v, p, m, he, user_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8,$9)', [date, food, nutrition, quantity, v, p, m, he, req.session.userId], (error, results) => {
+  const kcal = req.body.kcal
+  pool.query('INSERT into public."diary" (date, food, nutrition, quantity, v, p, m, he, user_id, energy) VALUES ($1, $2, $3, $4, $5, $6, $7, $8,$9, $10)', [date, food, nutrition, quantity, v, p, m, he, req.session.userId, kcal], (error, results) => {
       if (error)
           throw error
       else {
@@ -91,7 +94,7 @@ app.post('/addToDiary', async (req, res) => {
   })
 })
 app.get('/getDiary', async (req, res) => {
-  pool.query('SELECT * FROM public."diaryex" WHERE user_id=$1', [req.session.userId], async function (error, results) {
+  pool.query('SELECT * FROM public."diary" WHERE user_id=$1 ORDER BY date ASC', [req.session.userId], async function (error, results) {
       if (error) {
           res.send({
               "code": 400,
@@ -111,7 +114,7 @@ app.get('/getDiary', async (req, res) => {
 app.get('/getDiaryFilter', async (req, res) => {
   const fromDate = req.query.fromDate
   const toDate = req.query.toDate
-  pool.query('SELECT * FROM public."diaryex" WHERE date BETWEEN $1 AND $2 AND user_id=$3', [fromDate, toDate, req.session.userId], async function (error, results) {
+  pool.query('SELECT * FROM public."diary" WHERE date BETWEEN $1 AND $2 AND user_id=$3 ORDER BY date ASC', [fromDate, toDate, req.session.userId], async function (error, results) {
       if (error) {
           res.send({
               "code": 400,
@@ -127,6 +130,55 @@ app.get('/getDiaryFilter', async (req, res) => {
       }
   })
 })
+
+app.get('/getDiaryByDate', async (req, res) => {
+  const date = req.query.date
+  const query = `
+  SELECT * FROM public."diary"
+  WHERE date_trunc('day', date) = $1
+  AND user_id=$2 ORDER BY date ASC
+`;
+  pool.query(query, [date, req.session.userId], async function (error, results) {
+      if (error) {
+          res.send({
+              "code": 400,
+              "failed": "error ocurred",
+              "error": error
+          })
+
+      }
+      else {
+          res.send({
+              "results": results
+          })
+      }
+  })
+})
+
+app.post('/addRecipe', async(req, res) => {
+  const description = req.body.description
+  const m = req.body.mRecepta
+  const v = req.body.vRecepta
+  const p = req.body.pRecepta
+  const kcal = req.body.kcalRecepta
+  const he = v/12
+  const recepta = req.body.recepta
+  const quantity = req.body.quantity
+  const title = req.body.title
+  const gluten = req.body.gluten
+  const beltyk = req.body.beltyk
+
+  pool.query('INSERT into public."recipes" (p, m, v, he, energy, quantity, description, user_id, recipe, value, gluten, beltyk) VALUES ($1, $2, $3, $4, $5, $6, $7, $8,$9, $10, $11, $12)', [p, m, v, he, kcal, quantity, description, req.session.userId, recepta, title, gluten, beltyk], (error, results) => {
+    if (error)
+        throw error
+    else {
+        res.send(
+            "Рецептата е добавена успешно"
+        )
+    }
+})
+
+})
 app.get('/barcodeSearch', db.barcodeSearch)
 app.get('/logout', async(req,res)=>{
   req.session.destroy(function(err){
@@ -138,7 +190,6 @@ app.get('/logout', async(req,res)=>{
       res.send("Session destroyed!")}})
     })
 app.get('/login',async(req,res)=>{
-  console.log(req.query)
   const email = req.query.email
     const pass = req.query.pass
     pool.query('SELECT * FROM public."users" WHERE email=$1',[email], async function(error, results){
@@ -154,7 +205,6 @@ app.get('/login',async(req,res)=>{
                 if (await argon2.verify(results.rows[0].hash, pass)) {
                   req.session.userId=results.rows[0].id
                   isAuth=true                  
-                  console.log(req.session.userId)
                     res.send(
                       {
                         "code": 200,
@@ -175,33 +225,36 @@ app.get('/login',async(req,res)=>{
   
   
 })
-app.post('/register', crypt.register /* async(req,res)=>{
-  console.log(req.session)
-} */)
-app.post('/forgot', crypt.forgot /*async(req,res)=>{
-  console.log(req.session)
-}*/)
+app.post('/register', crypt.register)
+app.post('/forgot', crypt.forgot)
 app.get('/reset-password/:id/:token', crypt.reset)
 app.post('/reset-password/:id/:token',crypt.resetPost)
-/*
-app.get('/login', db.login)
-app.post('/register', db.createUser)
-app.post('/add-product', db.addProduct)
-app.get('/laptops', db.getLaptops)
-app.get('/get-product', db.getProduct)
-app.get('/filter',  db.filter)
-app.get('/filter-monitors',  db.filterMonitors)
-app.put('/edit-product', db.editProduct)
-app.delete('/delete-product', db.deleteProduct)
-app.post('/update-cart', db.updateCart)
-app.get('/get-cart', db.getCart)
-app.delete('/delete-from-cart', db.deleteFromCart)
-app.delete('/delete-all', db.deleteAll)
-app.get('/get-user', db.getUser)
-app.get('/get-first', db.getFirst)
-app.get('/get-second', db.getSecond)
-app.get('/homepage', db.homePage)
-*/
+app.get('/fetch-my-recipes', async(req, res)=>{
+  pool.query('SELECT * FROM public."recipes" WHERE user_id=$1',[req.session.userId], async function(error, results){
+    if(error)
+    throw error
+    res.send(
+      {
+      "results":results
+      }
+    )
+  }
+  )
+})
+
+app.get('/fetch-all-recipes', async(req, res)=>{
+  pool.query('SELECT * FROM public."recipes" ', async function(error, results){
+    if(error)
+    throw error
+    res.send(
+      {
+      "results":results
+      }
+    )
+  }
+  )
+})
+
   app.listen(port, () => {
     console.log(`App running on port ${port}.`)
   })

@@ -1,0 +1,165 @@
+.tabs{
+    width: 40%;
+    color: white;
+    background-color: #41B3A3;
+    font-size: large;
+    font-weight: bold;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    cursor: pointer;
+}
+
+.upnav{
+    display: flex;
+    justify-content: center;
+    margin-top: 1%;
+}
+
+table{
+    height: fit-content;
+    margin-top: 2%;
+}
+
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+}
+
+.popup{
+    border: 5px solid #41B3A3;
+    border-radius: 1%;
+    padding: 1%;
+    margin: 2%;
+}
+.macro{
+    display: flex;
+    flex-direction: column;
+}
+.open{
+    background-color: #41B3A3;
+    color: white;
+    border: 2px solid;
+    border-radius: 5px;
+    padding: 5% 10%;
+    cursor: pointer;
+}
+
+.close{
+    background-color: #FF6347;
+    color: white;
+    border: 2px solid;
+    border-radius: 5px;
+    padding: 2% 4%;
+    cursor: pointer;
+}
+
+.nav{
+    display: flex;
+    justify-content: space-evenly;
+    background-color:#8e807e;
+    margin-right: 20%;
+    width:100%
+}
+.navlink{
+    color: #ffffff;
+    text-decoration: none;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    font-size: large;
+    font-weight: bold;
+
+    &:hover {
+      text-decoration: underline;
+    }
+}
+
+.popuplabel {
+    font-weight: bold;
+    font-style: italic;
+}
+
+@media (max-width: 768px) {
+    .tabs{
+        width: 40%;
+        color: white;
+        background-color: #41B3A3;
+        font-size: large;
+        font-weight: bold;
+        padding-top: 1%;
+        padding-bottom: 1%;
+        cursor: pointer;
+    }
+    
+    .upnav{
+        display: flex;
+        justify-content: center;
+        margin-top: 1%;
+    }
+    
+    table{
+        height: fit-content;
+        margin-top: 2%;
+    }
+    
+    .container{
+        display: flex;
+        flex-direction: row;
+        justify-content:center;
+    }
+    
+    .popup{
+        border: 5px solid #41B3A3;
+        border-radius: 1%;
+        padding: 1%;
+        margin: 2%;
+    }
+    .macro{
+        display: flex;
+        flex-direction: column;
+    }
+    .open{
+        background-color: #41B3A3;
+        color: white;
+        border: 2px solid;
+        border-radius: 5px;
+        padding: 5% 10%;
+        cursor: pointer;
+    }
+    
+    .close{
+        background-color: #FF6347;
+        color: white;
+        border: 2px solid;
+        border-radius: 5px;
+        padding: 2% 4%;
+        cursor: pointer;
+    }
+    
+    .nav {
+        display: flex;
+        justify-content: space-evenly;
+        background-color: #8e807e;
+        width: 100%;
+        min-height: 7vw;
+      }
+      
+      .navlink {
+        color: #ffffff;
+        text-decoration: none;
+        margin-top: 1%;
+        margin-bottom: 1%;
+        font-size: 3vw; /* Adjust font size using vw (viewport width) */
+        font-weight: bold;
+        white-space:pre-line;
+      
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    
+    .popuplabel {
+        font-weight: bold;
+        font-style: italic;
+    }
+}

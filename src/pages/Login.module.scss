@@ -10,55 +10,81 @@ $accentColor: #FF6347;
   background-color: white;
   padding: 5%;
   height: 100vh;
-}
 
-.label {
-  color: $secondaryColor;
-  font-weight: bold;
-  margin-bottom: 2%;
-  text-align: center;
-  padding-right: 5%;
-}
-
-.inputContainer {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  margin-bottom: 4%;
-}
-
-.input {
-  width: fit-content;
-  padding: 2%;
-  border: 2px solid $secondaryColor;
-  border-radius: 5px;
-  text-align: center;
-  color: black;
-  font-size: 16px;
-  margin-bottom: 5%;
-}
-
-.submitButton {
-  background-color: $secondaryColor;
-  color: white;
-  border: 2px solid;
-  border-radius: 5px;
-  padding: 10px 20px;
-  cursor: pointer;
-
-  &:hover {
+  .label {
     color: $secondaryColor;
-    background-color: white;
-    border: 2px solid;
+    font-weight: bold;
+    margin-bottom: 2%;
+    text-align: center;
+    padding-right: 5%;
   }
+
+  .inputContainer {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    margin-bottom: 4%;
+  }
+
+  .input {
+    width: fit-content;
+    padding: 2%;
+    border: 2px solid $secondaryColor;
+    border-radius: 5px;
+    text-align: center;
+    align-self: center;
+    color: black;
+    font-size: 16px;
+    margin-bottom: 5%;
+  }
+
+  .submitButton {
+    background-color: $secondaryColor;
+    color: white;
+    border: 2px solid;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+
+    &:hover {
+      color: $secondaryColor;
+      background-color: white;
+      border: 2px solid;
+    }
+  }
+.logodiv{
+  display: flex;
+  justify-content: center;
 }
 
-.link {
-  color: $accentColor;
-  text-decoration: none;
-  margin-top: 4%;
+  .logo {
+    width: 70%;
+    height: 70%;
+    align-self: center;
+  }
 
-  &:hover {
-    text-decoration: underline;
+  .backButton {
+    background-color: $accentColor;
+    color: white;
+    border: 2px solid;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+
+    &:hover {
+      color: $accentColor;
+      background-color: white;
+      border: 2px solid;
+    }
+  }
+
+  .link {
+    color: $accentColor;
+    text-decoration: none;
+    margin-top: 4%;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }

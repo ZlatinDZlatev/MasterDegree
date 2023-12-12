@@ -1,3 +1,35 @@
-table, th, td {
+/*table, th, td {
     border: 1px solid;
+  }*/
+
+
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+  
+  th {
+    background-color: #41B3A3;
+    color: white;
+    padding: 10px;
+    text-align: left;
+    border: 3px solid #0f8474;
+
   }
+  
+  td {
+    background-color: white;
+    padding: 10px;
+    border: 3px solid #0f8474;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #41B3A3;
+  }
+  
+  .highlight {
+    background-color: #FF6347;
+    color: white;
+  }
+

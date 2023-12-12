@@ -1,106 +1,498 @@
 .wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #d3d3d3;
+  padding: 1.5%; /* Adjust padding using percentage */
+  min-height: 100vh; /* Adjust min-height */
+
+}
+
+.searchdiv {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1%; /* Use percentage for margin */
+  width: 100%;
+}
+
+.innersearch {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 1.5vw; /* Adjust font size using vw (viewport width) */
+}
+
+.search {
+  width: 10%; /* Adjust width using percentage */
+  padding: 1%;
+  border: none;
+  border-radius: 5px;
+  background-color: #FFFFFF;
+  color: #000000;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #8e807e;
+  width: 100%;
+}
+
+.navlink {
+  color: #ffffff;
+  text-decoration: none;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  font-size: 1.5vw; /* Adjust font size using vw (viewport width) */
+  font-weight: bold;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.exit {
+  background-color: #FF6347;
+  color: #FFFFFF;
+  font-weight: bold;
+  padding: 1% 2%; /* Adjust padding using percentage */
+  border: none;
+  height: 5%; /* Adjust height using percentage */
+  width: 15%; /* Adjust width using percentage */
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.row {
+  padding: 1.5%;
+  margin-top: 2%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  border: 3px solid rgba(156, 149, 149, 0.6);
+  border-radius: 20px;
+  background-color: rgba(156, 149, 149, 0.6);
+  color: #000000;
+  font-size: 1.5vw; /* Adjust font size using vw (viewport width) */
+  width: 70%;
+}
+
+.column {
+  flex-basis: calc(33.33% - 1%);
+  margin-bottom: 1%;
+}
+
+.choice {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 1%;
+}
+
+.checkradio {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-evenly;
+  border: 3px solid rgba(156, 149, 149, 0.6);
+  border-radius: 20px;
+  padding: 1%;
+  background-color: rgba(156, 149, 149, 0.6);
+  color: #000000;
+  font-size: 1.5vw; /* Adjust font size using vw (viewport width) */
+  width: 70%;
+  margin-top: 1%;
+}
+
+.radio {
+  margin-right: 1%;
+}
+
+.filters {
+  display: grid;
+  /* margin-top: 10px; */
+}
+
+.check {
+  margin-left: 1%;
+}
+
+.macrodiv {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1%;
+}
+
+.macro {
+  margin-right: 1%;
+  flex: 0 0 3%;
+}
+
+.number {
+  width: 10%; /* Adjust width using percentage */
+  padding: 1%;
+  border: 1px solid #41B3A3;
+  border-radius: 5px;
+  flex: 1;
+}
+
+.diary {
+  margin-top: 1%;
+  padding: 1% 2%; /* Adjust padding using percentage */
+  background-color: #FF6347;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.5vw; /* Adjust font size using vw (viewport width) */
+}
+
+.nutritiondiv {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 1%;
+  flex-direction: column;
+}
+
+.nutrition {
+  margin-right: 1%;
+  width: 30%; /* Adjust width using percentage */
+  padding: 1%;
+  border: none;
+  border-radius: 5px;
+}
+.datetime{
+  margin-right: 1%;
+  width: 10px; /* Adjust width using percentage */
+  padding: 1%;
+  border: none;
+  border-radius: 5px;
+}
+
+.calc {
+  margin-top: 1%;
+  border: 3px solid;
+  border-color: rgba(156, 149, 149, 0.6);
+  border-radius: 20px;
+  padding: 2%;
+  background-color: rgba(156, 149, 149, 0.6);
+  opacity: 1;
+  color: #000000;
+  font-size: 1.5vw; /* Adjust font size using vw (viewport width) */
+  width: 70%;
+}
+
+.bot {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.barcode {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 70%;
+}
+
+.diarydiv {
+  border: 3px solid rgba(156, 149, 149, 0.6);
+  border-radius: 20px;
+  background-color: rgba(156, 149, 149, 0.6);
+  color: rgb(14, 13, 13);
+  margin-top: 1%;
+  margin-right: 1%;
+  padding: 2%;
+  font-size: 1.5vw; /* Adjust font size using vw (viewport width) */
+}
+
+.linkdiv {
+  display: flex;
+  justify-content: space-between;
+  border: 2px solid #000000;
+  margin-top: 1%;
+  padding: 2%;
+}
+
+.labeldiv {
+  display: flex;
+  justify-content: space-between;
+  border: 2px solid #000000;
+  margin-top: 1%;
+  padding: 2%;
+}
+
+.label {
+  margin-right: 1%;
+}
+
+.bottomdiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1.5%;
+}
+
+.calcdiv {
+  display: flex;
+  align-items: center;
+  margin-top: 1%;
+}
+
+.exitdiv {
+  margin-top: 1.5%;
+}
+
+@media (max-width: 768px){
+  .wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #CECECE;
-    padding: 20px;
-    height: 100vh;
-
+    background-color: #d3d3d3;
+    padding: 1.5%; /* Adjust padding using percentage */
+    min-height: 100vh; /* Adjust min-height */
   
-    .searchdiv {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 10px;
-    }
+  }
   
-    .search {
-      width: 200px;
-      padding: 5px;
-      border: none;
-      border-radius: 5px;
-      background-color: #FFFFFF;
-      color: #000000;
-    }
+  .searchdiv {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1%; /* Use percentage for margin */
+    width: 100%;
+  }
   
-    .exit {
-      background-color: #FF6347;
-      color: #FFFFFF;
-      padding: 5px 10px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
+  .innersearch {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 3vw; /* Adjust font size using vw (viewport width) */
+  }
   
-    .choice {
-      display: flex;
-      align-items: center;
-      margin-top: 10px;
+  .search {
+    width: 10%; /* Adjust width using percentage */
+    padding: 1%;
+    border: none;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    color: #000000;
+  }
   
-      .radio {
-        margin-right: 5px;
-      }
-    }
-    .filters{
-        display: grid;
-        .check {
-            margin-left: 5px;
-          }
-          
-    }
-
+  .nav {
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #8e807e;
+    width: 100%;
+  }
   
-   
+  .navlink {
+    color: #ffffff;
+    text-decoration: none;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    font-size: 3vw; /* Adjust font size using vw (viewport width) */
+    font-weight: bold;
   
-    .macrodiv {
-      display: flex;
-      align-items: center;
-      margin-bottom: 10px;
-  
-      .macro {
-        margin-right: 5px;
-      }
-  
-      .number {
-        width: 100px;
-        padding: 5px;
-        border: 1px solid #41B3A3;
-        border-radius: 5px;
-      }
-    }
-  
-    .diary {
-      margin-top: 10px;
-      padding: 5px 10px;
-      background-color: #41B3A3;
-      color: #FFFFFF;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-  
-    .nutritiondiv {
-      display: flex;
-      align-items: center;
-      margin-top: 10px;
-  
-      .nutrition {
-        margin-right: 5px;
-        width: 150px;
-        padding: 5px;
-        border: 1px solid #41B3A3;
-        border-radius: 5px;
-      }
-    }
-  
-    .calc {
-      margin-top: 10px;
-  
-      .number {
-        width: 100px;
-        padding: 5px;
-        border: 1px solid #41B3A3;
-        border-radius: 5px;
-      }
+    &:hover {
+      text-decoration: underline;
     }
   }
+  
+  .exit {
+    background-color: #FF6347;
+    color: #FFFFFF;
+    font-weight: bold;
+    padding: 1% 2%; /* Adjust padding using percentage */
+    border: none;
+    height: 5%; /* Adjust height using percentage */
+    width: 15%; /* Adjust width using percentage */
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .row {
+    padding: 1.5%;
+    margin-top: 2%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    border: 3px solid rgba(156, 149, 149, 0.6);
+    border-radius: 20px;
+    background-color: rgba(156, 149, 149, 0.6);
+    color: #000000;
+    font-size: 3vw; /* Adjust font size using vw (viewport width) */
+    width: 90%;
+  }
+  
+  .column {
+    flex-basis: calc(33.33% - 1%);
+    margin-bottom: 1%;
+  }
+  
+  .choice {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 1%;
+  }
+  
+  .checkradio {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+    border: 3px solid rgba(156, 149, 149, 0.6);
+    border-radius: 20px;
+    padding: 1%;
+    background-color: rgba(156, 149, 149, 0.6);
+    color: #000000;
+    font-size: 3vw; /* Adjust font size using vw (viewport width) */
+    width: 70%;
+    margin-top: 1%;
+  }
+  
+  .radio {
+    margin-right: 1%;
+  }
+  
+  .filters {
+    display: grid;
+    /* margin-top: 10px; */
+  }
+  
+  .check {
+    margin-left: 1%;
+  }
+  
+  .macrodiv {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1%;
+  }
+  
+  .macro {
+    margin-right: 1%;
+    flex: 0 0 3%;
+  }
+  
+  .number {
+    width: 10%; /* Adjust width using percentage */
+    padding: 1%;
+    border: 1px solid #41B3A3;
+    border-radius: 5px;
+    flex: 1;
+  }
+  
+  .diary {
+    margin-top: 1%;
+    padding: 1% 2%; /* Adjust padding using percentage */
+    background-color: #FF6347;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 3vw; /* Adjust font size using vw (viewport width) */
+  }
+  
+  .nutritiondiv {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 1%;
+    flex-direction: column;
+  }
+  
+  .nutrition {
+    margin-right: 1%;
+    width: 65%; /* Adjust width using percentage */
+    padding: 1%;
+    border: none;
+    border-radius: 5px;
+  }
+
+  .datetime{
+    margin-right: 1%;
+    width: 10px; /* Adjust width using percentage */
+    padding: 1%;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .calc {
+    margin-top: 1%;
+    border: 3px solid;
+    border-color: rgba(156, 149, 149, 0.6);
+    border-radius: 20px;
+    padding: 2%;
+    background-color: rgba(156, 149, 149, 0.6);
+    opacity: 1;
+    color: #000000;
+    font-size: 3vw; /* Adjust font size using vw (viewport width) */
+    width: 70%;
+  }
+  
+  .bot {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .barcode {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 70%;
+  }
+  
+  .diarydiv {
+    border: 3px solid rgba(156, 149, 149, 0.6);
+    border-radius: 20px;
+    background-color: rgba(156, 149, 149, 0.6);
+    color: rgb(14, 13, 13);
+    margin-top: 1%;
+    margin-right: 1%;
+    padding: 2%;
+    font-size: 3vw; /* Adjust font size using vw (viewport width) */
+  }
+  
+  .linkdiv {
+    display: flex;
+    justify-content: space-between;
+    border: 2px solid #000000;
+    margin-top: 1%;
+    padding: 2%;
+  }
+  
+  .labeldiv {
+    display: flex;
+    justify-content: space-between;
+    border: 2px solid #000000;
+    margin-top: 1%;
+    padding: 2%;
+  }
+  
+  .label {
+    margin-right: 1%;
+  }
+  
+  .bottomdiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1.5%;
+  }
+  
+  .calcdiv {
+    display: flex;
+    align-items: center;
+    margin-top: 1%;
+  }
+  
+  .exitdiv {
+    margin-top: 1.5%;
+  }
+}
